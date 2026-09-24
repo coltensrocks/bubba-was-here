@@ -11,6 +11,30 @@
 <body>
   <main class="memorial-page" aria-label="Colten Michael Harrsch memorial artwork">
     <img src="memorial-ocean-beach-night.png" alt="Memorial artwork for Colten Michael Harrsch, Forever 22" />
+    <section class="hotspots" aria-label="Explore Colten's journey">
+      <button class="hotspot nav-home" data-topic="home" aria-label="Home"></button>
+      <button class="hotspot nav-meet" data-topic="meet" aria-label="Meet Colten"></button>
+      <button class="hotspot nav-story" data-topic="story" aria-label="The story"></button>
+      <button class="hotspot nav-map" data-topic="map" aria-label="Bubba's map"></button>
+      <button class="hotspot nav-find" data-topic="find" aria-label="Find a rock"></button>
+      <button class="hotspot nav-share" data-topic="share" aria-label="Share a journey"></button>
+      <button class="hotspot nav-gallery" data-topic="gallery" aria-label="Gallery"></button>
+      <button class="hotspot rock" data-topic="find" aria-label="Read the heart rock message"></button>
+      <button class="hotspot map-cta" data-topic="map" aria-label="See where Bubba has been"></button>
+      <button class="hotspot card-meet" data-topic="meet" aria-label="Meet Colten"></button>
+      <button class="hotspot card-story" data-topic="story" aria-label="The story"></button>
+      <button class="hotspot card-map" data-topic="map" aria-label="Bubba's map"></button>
+      <button class="hotspot card-find" data-topic="find" aria-label="Find a rock"></button>
+      <button class="hotspot card-share" data-topic="share" aria-label="Share a journey"></button>
+      <button class="hotspot card-gallery" data-topic="gallery" aria-label="Gallery"></button>
+    </section>
   </main>
+  <dialog id="journey-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close" type="button" aria-label="Close">×</button>
+    <p class="dialog-kicker">FOREVER 22</p>
+    <h1 id="dialog-title"></h1>
+    <p id="dialog-copy"></p>
+  </dialog>
+  <script src="app.js"></script>
 </body>
 </html>
