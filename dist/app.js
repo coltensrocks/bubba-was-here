@@ -13,16 +13,40 @@ const title = document.querySelector('#dialog-title');
 const copy = document.querySelector('#dialog-copy');
 const close = document.querySelector('.dialog-close');
 
+function showTopic(topic) {
+  const content = details[topic];
+  if (!content) return;
+
+  const [heading, text] = content;
+  title.textContent = heading;
+  copy.textContent = text;
+  if (!dialog.open) dialog.showModal();
+}
+
+function topicFromHash() {
+  return window.location.hash.slice(1);
+}
+
 document.querySelectorAll('[data-topic]').forEach((button) => {
   button.addEventListener('click', () => {
-    const [heading, text] = details[button.dataset.topic];
-    title.textContent = heading;
-    copy.textContent = text;
-    dialog.showModal();
+    const topic = button.dataset.topic;
+    if (topicFromHash() === topic) showTopic(topic);
+    else window.location.hash = topic;
   });
 });
 
-close.addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', (event) => {
-  if (event.target === dialog) dialog.close();
+window.addEventListener('hashchange', () => {
+  const topic = topicFromHash();
+  if (details[topic]) showTopic(topic);
+  else if (dialog.open) dialog.close();
 });
+
+close.addEventListener('click', () => {
+  history.replaceState(null, '', window.location.pathname + window.location.search);
+  dialog.close();
+});
+dialog.addEventListener('click', (event) => {
+  if (event.target === dialog) close.click();
+});
+
+if (details[topicFromHash()]) showTopic(topicFromHash());
